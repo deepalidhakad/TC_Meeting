@@ -1,0 +1,22 @@
+<h1>All Users:-</h1>
+
+<div class="row">
+  <% @users.each do |user| %>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <p><b> Your Name: </b><%= user.username %></p> 
+        <p><b> Email: </b><%= user.email %></p> 
+        <p><b> Phone: </b><%= user.phone %></p> 
+        <p><b> Address: </b><%= user.address %></p> 
+        <p><%= image_tag user.image, :size => "100x100" if user.image.attached? %></p>
+        <% if current_user.role == "HR" %>
+        <%= link_to "Edit User", edit_user_path(user) %> |
+        <%= button_to "Delete User", user, method: :delete , class:"btn btn-outline-danger"%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div><br>
+<%= link_to "Back to users", root_path , class:"btn btn-outline-success"%>

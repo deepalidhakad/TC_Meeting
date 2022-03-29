@@ -1,0 +1,9 @@
+<center><h1>Login</h1>   
+<%= form_tag @user do %>   
+<%= label_tag :username%><br>   
+<%= text_field_tag :username %><br>  
+<%= label_tag :password%> <br>  
+<%= password_field_tag :password%> <br><br>  
+<%= submit_tag "Login", class:"btn btn-outline-success"%><%end%><br>
+<%= button_to "Sign Up", '/users/new', method: :get, class:"btn btn-outline-primary"%><br>
+</center>

@@ -1,0 +1,21 @@
+<% if logged_in? %> 
+<br><h2>All Your's Meeting's:</h2>
+<br><div class="row">
+   <% current_user.events.each do |event| %>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+     <p><b> Purpose: </b><%= event.purpose %></p>
+     <p><b> People: </b><%= event.people %></p>
+     <p><b> Start Time: </b><%= event.start_date %></p>
+     <p><b> End Time: </b><%= event.end_date %></p>
+     <%= link_to "Edit this hosting", edit_event_path(event), class:"card-link" %> |
+     <%= button_to "Destroy this hosting", event, method: :delete , class:"tn btn-outline-danger"%>
+      </div>
+    </div>
+  </div><% end %>
+</div>
+
+<%else%>
+   <center><h1>Please first Login</h1></center>
+<%end%>

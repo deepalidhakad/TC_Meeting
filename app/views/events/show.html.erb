@@ -1,0 +1,14 @@
+<h1>Event Details:-</h1>
+ <p>Please Note Your Allocated Room <h1 style="color: red;"><%= @room %></h1></p>
+<div>
+  <p><b> Purpose: </b><%= @event.purpose %></p>
+  <p><b> People: </b><%= @event.people %></p>
+  <p><b> Start Time: </b><%= @event.start_date %></p>
+  <p><b> End Time: </b><%= @event.end_date %></p>
+  <p><b> Host: </b><%= @event.user.to_s %></p>
+
+</div>
+<div>
+ <%= link_to "Edit this Meeting", edit_event_path(@event) %> |
+ <%= link_to "Back to events", root_path %>
+</div>

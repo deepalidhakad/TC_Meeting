@@ -1,0 +1,17 @@
+<h1>Editing Details:-</h1>
+
+<%= form_with model: @user do |f|%>  
+<%= f.label :email%><br>  
+<%= f.email_field :email%><br> 
+<%= f.label :phone%><br>  
+<%= f.number_field :phone%><br> 
+<%= f.label :address%><br>  
+<%= f.text_field :address%><br> 
+<%= f.label :image%><br> 
+<%= f.file_field :image%><br><br>
+<%= f.submit  "Save" %>
+<%end%>
+<br>
+<div>
+  <%= link_to "Back to users", users_path, class:"btn btn-outline-success" %>
+</div>
