@@ -3,7 +3,7 @@
 <div class="row">
   <% @users.each do |user| %>
   <div class="col-sm-6">
-    <div class="card">
+    <div class="card navbar-light bg-light">
       <div class="card-body">
         <p><b> Your Name: </b><%= user.username %></p> 
         <p><b> Email: </b><%= user.email %></p> 
@@ -15,7 +15,7 @@
         <%= button_to "Delete User", user, method: :delete , class:"btn btn-outline-danger"%>
         <% end %>
       </div>
-    </div>
+    </div><br>
   </div>
   <% end %>
 </div><br>

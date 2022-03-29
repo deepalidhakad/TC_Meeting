@@ -18,6 +18,7 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.new(event_params)
+      # WelcomeMailer.with(event: @event).event_send.deliver_now
         if @event.save
           flash[:notice] = "Schedule created successfully."
           redirect_to @event

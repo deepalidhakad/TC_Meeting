@@ -1,4 +1,6 @@
-<center><h1>Login</h1>   
+<br><br><center><div class="card" style="width: 18rem;" >
+<div class="card-body">
+<h1>Login</h1>   
 <%= form_tag @user do %>   
 <%= label_tag :username%><br>   
 <%= text_field_tag :username %><br>  
@@ -6,4 +8,6 @@
 <%= password_field_tag :password%> <br><br>  
 <%= submit_tag "Login", class:"btn btn-outline-success"%><%end%><br>
 <%= button_to "Sign Up", '/users/new', method: :get, class:"btn btn-outline-primary"%><br>
+</div>
+</div>
 </center>

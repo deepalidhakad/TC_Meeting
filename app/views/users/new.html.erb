@@ -1,3 +1,5 @@
+<br><br><center><div class="card" style="width: 18rem;" >
+<div class="card-body">
 <center><h1>Sign Up</h1>
 <%= form_for @user do |f|%>  
 <%= f.label :username%><br>  
@@ -10,4 +12,6 @@
 <%= f.password_field :password%><br><br>
 <%= f.submit  "SignUp" , class:"btn btn-outline-primary"%><%end%>
 <p><%= button_to "Login", '/login', method: :get, class:"btn btn-outline-success"%><br></p>
+</div>
+</div>
 </center>

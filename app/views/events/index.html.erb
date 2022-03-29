@@ -2,7 +2,7 @@
 <div class="row">
   <% @events.each do |event| %>
  <div class="col-sm-6">
-    <div class="card">
+    <div class="card navbar-light bg-light">
       <div class="card-body">
         <p><b> Purpose: </b><%= event.purpose %></p>
         <p><b> People: </b><%= event.people %></p>
@@ -14,7 +14,7 @@
          <%= button_to "Destroy this hosting", event, method: :delete , class:"btn btn-outline-danger"%>
          <% end %>
       </div>
-    </div> 
+    </div> <br>
  </div> <% end %>
 </div>
 <br>

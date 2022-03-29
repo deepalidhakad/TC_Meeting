@@ -18,13 +18,15 @@
 
   <body>
 
-<nav class="navbar navbar-light bg-light">
-   <div class="container-fluid">
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
      <% if logged_in? %> 
+
     <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
     Profile
     </button>
+    
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
      <% if current_user.role == "HR" %>
      <%= link_to "All Users", users_path , class:"dropdown-item"%>
@@ -34,14 +36,16 @@
      <%= button_to "New Event", '/events/new', method: :get, class:"dropdown-item"%>
      <%= button_to "Logout", '/logout', method: :get, class:"dropdown-item"%>
     </ul>
-    </div> <h3>Welcome : <%= current_user.username %></h3>
+    </div> 
+
+     <%= image_tag("logo.png" , :size => "70x30") %>
 
     <form class="form-inline" action="/search" method="GET">
       <div class="container" class="justify-content-center">
         <div class="row height d-flex justify-content-center align-items-center">
           <table>
               <td><input type="/search" class="form-control" placeholder="purpose" aria-label="Search" name="query" method = "GET" class="form-control form-control-lg"> </td>
-              <td><button class="btn btn-primary col-md-12  " type="submit" >Search</button> </td>
+              <td><button class="btn btn-primary col-md-12" type="submit" >Search</button> </td>
           </table>
         </div>
       </div>
@@ -51,11 +55,15 @@
       <%= button_to "Login", '/login', method: :get, class:"btn btn-outline-success"%>
       <% end %> 
     </div>
-</nav>
+    </nav>
+      <% if logged_in? %> 
+      <p style="text-align: center;">Welcome : <span style="color: red;"><b><%= current_user.username %></b></span></p>
+      <% end %>
 
     <% if flash[:notice] %>
     <div class="alert alert-primary"><%= flash[:notice] %></div>
-    <% end %>    
+    <% end %>   
+
     <%= yield %>
 
   </body>
