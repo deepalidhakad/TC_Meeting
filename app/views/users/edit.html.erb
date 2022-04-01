@@ -1,4 +1,4 @@
-<h1>Editing Details:-</h1>
+<h1>Edit Details:-</h1>
 
 <%= form_with model: @user do |f|%>  
 <%= f.label :email%><br>  
@@ -12,6 +12,7 @@
 <%= f.submit  "Save" %>
 <%end%>
 <br>
+
 <div>
   <%= link_to "Back to users", users_path, class:"btn btn-outline-success" %>
 </div>

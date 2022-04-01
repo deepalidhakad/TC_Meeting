@@ -19,17 +19,14 @@ class UsersController < ApplicationController
 
     def show  
       @user = User.find(params[:id])
-      # @user = current_user
     end
   
     def edit
        @user = User.find(params[:id])
-     # @user = current_user
     end
 
     def update
-        @user = User.find(params[:id])
-        # @user = current_user
+       @user = User.find(params[:id])
       if @user.update(user_params)
          redirect_to users_path
       else
@@ -38,20 +35,14 @@ class UsersController < ApplicationController
     end
 
     def destroy
-       @user = User.find(params[:id])
-      # @user = current_user
+      @user = User.find(params[:id])
       @user.destroy
       flash[:notice] = "Oops Account Delete."
       redirect_to root_path, status: :see_other
     end
    
-    # def search
-    #   @user = params[:query]
-    #   @users = User.where("users.username like ?", ["%#{@user}%"])
-    #   render :welcome
-    # end
+   private
 
- private
     def user_params
       params.require(:user).permit(:username, :password, :email, :phone, :address, :image,  :role)
     end

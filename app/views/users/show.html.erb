@@ -1,4 +1,3 @@
-<h1>Your's Details:-</h1>
 
 <div>
   <p><b> Your Name: </b><%= current_user.username %></p> 
@@ -6,8 +5,8 @@
   <p><b> Phone: </b><%= current_user.phone %></p> 
   <p><b> Address: </b><%= current_user.address %></p> 
   <p><b>Img:</b><br><%= image_tag current_user.image, :size => "100x100" if current_user.image.attached? %></p>
-
 </div><br>
+
 <div>
 <%= link_to "Back to users", root_path , class:"btn btn-outline-success"%>
 </div>

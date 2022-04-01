@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  
   before_action :set_event, only: %i[ show edit update destroy ]
 
   def index
@@ -6,7 +7,7 @@ class EventsController < ApplicationController
   end
 
   def show
-      @room = people_check
+    @room = people_check
   end
 
   def new
@@ -18,7 +19,6 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.new(event_params)
-      # WelcomeMailer.with(event: @event).event_send.deliver_now
         if @event.save
           flash[:notice] = "Schedule created successfully."
           redirect_to @event
@@ -64,4 +64,5 @@ class EventsController < ApplicationController
          @room = "PlugIn Room."
       end
     end
+
 end

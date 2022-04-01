@@ -1,21 +1,24 @@
-<center><h1>All User's Events</h1></center>
+<center><h1>All Scheduled Meetings:-</h1></center>
 <div class="row">
   <% @events.each do |event| %>
- <div class="col-sm-6">
-    <div class="card navbar-light bg-light">
-      <div class="card-body">
-        <p><b> Purpose: </b><%= event.purpose %></p>
-        <p><b> People: </b><%= event.people %></p>
-        <p><b> Start Time: </b><%= event.start_date %></p>
-        <p><b> End Time: </b><%= event.end_date %></p>
-        <p><b> Host: </b><%= event.user.to_s %></p>
+   <% if event.end_date > Time.now %>
+   <div class="col-sm-6">
+     <div class="card navbar-light bg-light">
+       <div class="card-body">
+             <p><b> Purpose: </b><%= event.purpose %></p>
+             <p><b> People: </b><%= event.people %></p>
+             <p><b> Start Time: </b><%= event.start_date %></p>
+             <p><b> End Time: </b><%= event.end_date %></p>
+             <p><b> Host: </b><%= event.user.to_s %></p>    
          <% if current_user.role == "HR" %>
          <%= link_to "Edit this hosting", edit_event_path(event), class:"card-link" %> |
          <%= button_to "Destroy this hosting", event, method: :delete , class:"btn btn-outline-danger"%>
          <% end %>
-      </div>
-    </div> <br>
- </div> <% end %>
+       </div>
+     </div> <br>
+   </div> 
+   <% end %>
+   <% end %>   
 </div>
 <br>
 <%= link_to "Back to users", root_path , class:"btn btn-outline-success"%>

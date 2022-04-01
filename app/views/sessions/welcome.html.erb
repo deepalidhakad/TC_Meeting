@@ -1,22 +1,28 @@
 <% if logged_in? %> 
-<h2>All Your's Meeting's:</h2>
-<br><div class="row">
+<h2>All Your Meetings:-</h2><br>
+<div class="row">
    <% current_user.events.each do |event| %>
-  <div class="col-sm-6">
-    <div class="card bg-light">
+    <div class="col-sm-6">
+     <div class="card bg-light">
       <div class="card-body">
-     <p><b> Purpose: </b><%= event.purpose %></p>
-     <p><b> People: </b><%= event.people %></p>
-     <p><b> Start Time: </b><%= event.start_date %></p>
-     <p><b> End Time: </b><%= event.end_date %></p>
-     <%= link_to "Edit this hosting", edit_event_path(event), class:"card-link" %> |
-     <%= button_to "Destroy this hosting", event, method: :delete , class:"tn btn-outline-danger"%>
+       <p><b> Purpose: </b><%= event.purpose %></p>
+       <p><b> People: </b><%= event.people %></p>
+       <p><b> Start Time: </b><%= event.start_date %></p>
+       <p><b> End Time: </b><%= event.end_date %></p>
+         <% if event.end_date < Time.now %>
+          <p style="color:red;">Your Meeting Expried</p>
+         <% end %>
+       <%= link_to "Edit this hosting", edit_event_path(event), class:"card-link" %> |
+       <%= button_to "Destroy this hosting", event, method: :delete , class:"tn btn-outline-danger"%>
       </div>
-    </div><br>
-  </div><% end %>
+     </div><br>
+    </div>
+  <% end %>
 </div>
 
 <%else%>
+
 <center style="margin-top: 120px;"><h1>Welcome To The</h1>
-<h1 style="font-size:200px;">Task<span style="color:orange;">C</span>raft</h1></center>
+<%= image_tag("logo.png") %>
+</center>
 <%end%>

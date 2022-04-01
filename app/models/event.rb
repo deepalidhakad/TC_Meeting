@@ -2,11 +2,13 @@ class Event < ApplicationRecord
 
     belongs_to :user
 
-	validates  :purpose, :start_date, :end_date, :people, presence: true
+	  validates  :purpose, :start_date, :end_date, presence: true
 
     validate :dates_are_available, on: :create
 
-    # validate :date_are_valid
+    validates :people, :numericality => { :greater_than_or_equal_to => 1, :less_than_or_equal_to => 20 }
+
+    validate :hour_check, on: :create
 
     private
 
@@ -35,11 +37,12 @@ class Event < ApplicationRecord
     end
   end
 
-    # def date_are_valid
-  		# if self.start_date <= self.end_date 
-    #  	else
-  	 #       errors.add(:end_date, "And End Time Not Valid")
-    # 	end
-    #  end
+  def hour_check
+     @hour = (start_date.to_i - end_date.to_i)/3600
+     if @hour == -1
+     else
+      self.errors.add(:base, 'Hours not greater then 1')
+    end
+  end
 
 end

@@ -10,6 +10,7 @@ $('#calendar').fullCalendar({ });
 function eventCalendar() {
   return $('#calendar').fullCalendar({ });
 };
+
 function clearCalendar() {
   $('#calendar').fullCalendar('delete'); 
   $('#calendar').html('');
@@ -18,4 +19,5 @@ function clearCalendar() {
 $(document).on('turbolinks:load', function(){
   eventCalendar();  
 });
+
 $(document).on('turbolinks:before-cache', clearCalendar);
