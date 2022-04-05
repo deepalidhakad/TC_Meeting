@@ -11,6 +11,7 @@
        
        resources :users
        resources :events
+       resources :password_resets
 
        get '/expried_index', to: 'events#expried_index'
     

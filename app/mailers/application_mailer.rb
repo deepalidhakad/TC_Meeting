@@ -1,6 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-
-  default from: "digital.invitation.website@gmail.com"
-  layout "mailer"
-  
+  default from: 'from@example.com'
+  layout 'mailer'
 end
+

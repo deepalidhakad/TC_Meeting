@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   
-  before_action :set_event, only: %i[ show edit update destroy ]
+ before_action :set_event, only: %i[ show edit update destroy ]
 
   def index
     @events = Event.all
@@ -20,7 +20,10 @@ class EventsController < ApplicationController
   def create
     @event = current_user.events.new(event_params)
         if @event.save
+          EventMailer.with(event: @event).event_send.deliver_now
           flash[:notice] = "Schedule created successfully."
+          @time = @event.start_date - 900
+          ConfirmMailer.with(event: @event).confirm_send.deliver_later(wait_until: @time)
           redirect_to @event
         else
           render :new, status: :unprocessable_entity
@@ -29,6 +32,7 @@ class EventsController < ApplicationController
 
   def update
       if @event.update(event_params)
+         UpdateMailer.with(event: @event).update_send.deliver_now
          flash[:notice] = "Schedule updated successfully."
          redirect_to @event
       else

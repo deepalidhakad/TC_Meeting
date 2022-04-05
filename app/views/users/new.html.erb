@@ -10,8 +10,8 @@
 <%= f.select :role, ['Empolyee', 'HR']%><br>
 <%= f.label :password%><br> 
 <%= f.password_field :password%><br><br>
-<%= f.submit  "SignUp" , class:"btn btn-outline-primary"%><%end%>
-<p><%= button_to "Login", '/login', method: :get, class:"btn btn-outline-success"%><br></p>
+<%= f.submit  "SignUp" , class:"btn btn-outline-primary"%><%end%><br>
+<%= link_to "Back to users", root_path , class:"btn btn-outline-success"%>
 </div>
 </div>
 </center>

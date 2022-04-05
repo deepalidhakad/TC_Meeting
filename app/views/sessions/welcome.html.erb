@@ -2,6 +2,7 @@
 <h2>All Your Meetings:-</h2><br>
 <div class="row">
    <% current_user.events.each do |event| %>
+     <% if event.end_date > Time.now %>
     <div class="col-sm-6">
      <div class="card bg-light">
       <div class="card-body">
@@ -16,7 +17,7 @@
        <%= button_to "Destroy this hosting", event, method: :delete , class:"tn btn-outline-danger"%>
       </div>
      </div><br>
-    </div>
+    </div><% end %>
   <% end %>
 </div>
 

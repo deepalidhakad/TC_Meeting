@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  skip_before_action :authorized, only: [:new, :create, :update]
+    skip_before_action :authorized, only: [:new, :create, :update]
 
     def index
       @users = User.all
@@ -12,9 +12,10 @@ class UsersController < ApplicationController
 
     def create   
       @user = User.create(user_params)   
-      session[:user_id] = @user.id   
+      # session[:user_id] = @user.id   
       WelcomeMailer.with(user: @user).welcome_send.deliver_now
-      redirect_to '/welcome'
+      flash[:notice] = "Account created successfully."
+      redirect_to users_path
     end
 
     def show  
@@ -26,9 +27,9 @@ class UsersController < ApplicationController
     end
 
     def update
-       @user = User.find(params[:id])
+      @user = User.find(params[:id])
       if @user.update(user_params)
-         redirect_to users_path
+        redirect_to users_path
       else
         render :edit
       end

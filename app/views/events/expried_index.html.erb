@@ -12,13 +12,12 @@
              <p style="color:red;">Meeting Expried</p>
              <p><b> Host: </b><%= event.user.to_s %></p>    
          <% if current_user.role == "HR" %>
-         <%= link_to "Edit this hosting", edit_event_path(event), class:"card-link" %> |
          <%= button_to "Destroy this hosting", event, method: :delete , class:"btn btn-outline-danger"%>
-         <% end %>
-        <% end %>   
+         <% end %>  
        </div>
      </div> <br>
-   </div> <% end %>
+   </div> <% end %> 
+    <% end %>
 </div>
 <br>
 <%= link_to "Back to users", root_path , class:"btn btn-outline-success"%>
