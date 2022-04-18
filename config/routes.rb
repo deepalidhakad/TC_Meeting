@@ -1,5 +1,5 @@
   Rails.application.routes.draw do  
-    
+
        root "sessions#welcome"
      
        get 'login', to: 'sessions#new'   
@@ -11,8 +11,9 @@
        
        resources :users
        resources :events
+       resources :rooms
        resources :password_resets
 
        get '/expried_index', to: 'events#expried_index'
-    
+
   end

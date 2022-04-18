@@ -1,9 +1,9 @@
-<center>
-<h1>Create New Schedule</h1>
+<span> If you don't know room capacity then click here </span><%= link_to "Room Capacity", rooms_path%><center>
+<h1 style=" color: white;">Create New Schedule</h1>
 
 <%= render "form", event: @event %><br>
 
 <div>
-<%= link_to "Back to users", root_path , class:"btn btn-outline-success"%>
+<%= link_to "Back to users", root_path , class:"btn btn-success"%>
 </div>
 </center>

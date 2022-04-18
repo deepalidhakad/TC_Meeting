@@ -1,11 +1,11 @@
-<h1>All Users:-</h1>
+<h1 style=" color: white;">All Users:-</h1>
 
 <div class="row">
   <% @users.each do |user| %>
-  <div class="col-sm-6">
-    <div class="card navbar-light bg-light">
+  <div class="col-sm-4">
+     <div class="card navbar-light bg-light"  style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUHfjWn2Sa5jFNRnlbskEQdXyN1tRhH1dpdQ&usqp=CAU); background-repeat: no-repeat; background-size: cover;">
       <div class="card-body">
-        <p><b> Your Name: </b><%= user.username %></p> 
+        <p><b> User Name: </b><%= user.username %></p> 
         <p><b> Email: </b><%= user.email %></p> 
         <p><b> Phone: </b><%= user.phone %></p> 
         <p><b> Address: </b><%= user.address %></p> 
@@ -19,4 +19,5 @@
   </div>
  <% end %>
 </div><br>
-<%= link_to "Back to users", root_path , class:"btn btn-outline-success"%>
+<%= link_to "Back to users", root_path , class:"btn btn-success"%>
+

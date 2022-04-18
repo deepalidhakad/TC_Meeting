@@ -1,15 +1,16 @@
 <% if logged_in? %> 
-<h2>All Your Meetings:-</h2><br>
+<h2 style=" color: white;">All Your Meetings:-</h2><br>
 <div class="row">
    <% current_user.events.each do |event| %>
      <% if event.end_date > Time.now %>
-    <div class="col-sm-6">
-     <div class="card bg-light">
+    <div class="col-sm-4">
+     <div class="card navbar-light bg-light"  style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUHfjWn2Sa5jFNRnlbskEQdXyN1tRhH1dpdQ&usqp=CAU); background-repeat: no-repeat; background-size: cover;">
       <div class="card-body">
        <p><b> Purpose: </b><%= event.purpose %></p>
        <p><b> People: </b><%= event.people %></p>
        <p><b> Start Time: </b><%= event.start_date %></p>
        <p><b> End Time: </b><%= event.end_date %></p>
+       <p><b> Room: </b><%= event.room.room_name %></p>
          <% if event.end_date < Time.now %>
           <p style="color:red;">Your Meeting Expried</p>
          <% end %>

@@ -7,7 +7,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @room = people_check
   end
 
   def new
@@ -18,12 +17,12 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.events.new(event_params)
+    @event = current_user.events.create(event_params)
         if @event.save
           EventMailer.with(event: @event).event_send.deliver_now
           flash[:notice] = "Schedule created successfully."
-          @time = @event.start_date - 900
-          ConfirmMailer.with(event: @event).confirm_send.deliver_later(wait_until: @time)
+          # @time = @event.start_date - 900
+          # ConfirmMailer.with(event: @event).confirm_send.deliver_later(wait_until: @time)
           redirect_to @event
         else
           render :new, status: :unprocessable_entity
@@ -58,15 +57,7 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:purpose, :people, :start_date, :end_date, :search)
-    end
-
-    def people_check
-      if @event.people <= 2 
-         @room = "Web Room."
-      else
-         @room = "PlugIn Room."
-      end
+      params.require(:event).permit(:purpose, :people, :start_date, :end_date, :search, :room_id)
     end
 
 end

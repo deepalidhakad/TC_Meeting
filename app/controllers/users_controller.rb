@@ -11,11 +11,14 @@ class UsersController < ApplicationController
     end
 
     def create   
-      @user = User.create(user_params)   
-      # session[:user_id] = @user.id   
+      @user = User.create(user_params)
+      if @user.save    
       WelcomeMailer.with(user: @user).welcome_send.deliver_now
       flash[:notice] = "Account created successfully."
       redirect_to users_path
+      else
+      render :new, status: :unprocessable_entity
+      end
     end
 
     def show  
@@ -29,7 +32,7 @@ class UsersController < ApplicationController
     def update
       @user = User.find(params[:id])
       if @user.update(user_params)
-        redirect_to users_path
+        redirect_to users_path, notice: 'Account successfully update.'  
       else
         render :edit
       end
@@ -47,5 +50,4 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :password, :email, :phone, :address, :image,  :role)
     end
-
 end

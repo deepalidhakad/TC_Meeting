@@ -1,0 +1,20 @@
+<%= form_for @room do |f|%>
+
+  <% if @room.errors.any? %>
+    <div style="color: red">
+      <ul>
+        <% @room.errors.each do |error| %>
+          <li style=" color: white;"><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div style=" color: white;">
+<%= f.label :room_name , style: "display: block"%>
+<%= f.text_field :room_name %>
+</div>
+<div style=" color: white;">
+<%= f.label :capacity , style: "display: block"%>  
+<%= f.text_field :capacity%>
+</div><br>
+<%= f.submit  "Save" , class:"btn btn-primary"%><%end%>

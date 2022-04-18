@@ -1,17 +1,36 @@
-<br><br><center><div class="card" style="width: 18rem;" >
-<div class="card-body">
+ <center> <% if @user.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+        <% @user.errors.each do |error| %>
+          <li style=" color: white;"><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="card" style="width: 18rem;" >
+<div class="card-body" style="background-image: url(https://t3.ftcdn.net/jpg/04/94/12/04/360_F_494120449_Xy5lNmqq39rGe3ThQYmAAwbf98e8vPjl.jpg); background-repeat: no-repeat; background-size: cover;">
 <center><h1>Add Employee</h1>
 <%= form_for @user do |f|%>  
-<%= f.label :username%><br>  
-<%= f.text_field :username%><br> 
-<%= f.label :email%><br>  
-<%= f.email_field :email%><br>
-<%= f.label :Role%><br> 
-<%= f.select :role, ['Empolyee', 'HR']%><br>
-<%= f.label :password%><br> 
-<%= f.password_field :password%><br><br>
-<%= f.submit  "SignUp" , class:"btn btn-outline-primary"%><%end%><br>
-<%= link_to "Back to users", root_path , class:"btn btn-outline-success"%>
+<div>
+<%= f.label :username, style: "display: block"%>
+<%= f.text_field :username%>
+</div>
+<div>
+<%= f.label :email, style: "display: block"%> 
+<%= f.email_field :email%>
+</div>
+<div>
+<%= f.label :Role, style: "display: block"%>
+<%= f.select :role, ['Empolyee', 'HR']%>
+</div>
+<div>
+<%= f.label :password, style: "display: block"%>
+<%= f.password_field :password%>
+</div><br>
+<%= f.submit  "SignUp" , class:"btn btn-primary"%><%end%><br>
+<%= link_to "Back to users", root_path , class:"btn btn-success"%>
 </div>
 </div>
 </center>
+

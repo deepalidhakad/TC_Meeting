@@ -1,15 +1,21 @@
-<center><h1>All Scheduled Meetings:-</h1></center>
+<center><h1 style=" color: white;">All Scheduled Meetings:-</h1></center>
 <div class="row">
   <% @events.each do |event| %>
    <% if event.end_date > Time.now %>
-   <div class="col-sm-6">
-     <div class="card navbar-light bg-light">
+   <div class="col-sm-4">
+     <div class="card navbar-light bg-light"  style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUHfjWn2Sa5jFNRnlbskEQdXyN1tRhH1dpdQ&usqp=CAU); background-repeat: no-repeat; background-size: cover;">
        <div class="card-body">
              <p><b> Purpose: </b><%= event.purpose %></p>
              <p><b> People: </b><%= event.people %></p>
              <p><b> Start Time: </b><%= event.start_date %></p>
              <p><b> End Time: </b><%= event.end_date %></p>
-             <p><b> Host: </b><%= event.user.to_s %></p>    
+             <p><b> Room: </b><%= event.room.room %></p>
+             <p><b> Host: </b><%= event.user.to_s %></p>
+
+         <% if event.room.capacity.to_i-2 > event.people.to_i %>
+         <% @res = event.room.capacity.to_i - event.people.to_i %>
+          <span style="color: red;"><%= @res %> Seats are availble</span><br><br>
+         <% end %>
          <% if current_user.role == "HR" %>
          <%= link_to "Edit this hosting", edit_event_path(event), class:"card-link" %> |
          <%= button_to "Destroy this hosting", event, method: :delete , class:"btn btn-outline-danger"%>
@@ -21,4 +27,4 @@
    <% end %>   
 </div>
 <br>
-<%= link_to "Back to users", root_path , class:"btn btn-outline-success"%>
+<%= link_to "Back to users", root_path , class:"btn btn-success"%>

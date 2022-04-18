@@ -1,14 +1,15 @@
-<center><h1>All Expried Meetings:-</h1></center>
+<center><h1 style=" color: white;">All Expried Meetings:-</h1></center>
 <div class="row">
   <% Event.all.each do |event| %>
    <% if event.end_date < Time.now %>
-   <div class="col-sm-6">
-     <div class="card navbar-light bg-light">
+   <div class="col-sm-4">
+      <div class="card navbar-light bg-light"  style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUHfjWn2Sa5jFNRnlbskEQdXyN1tRhH1dpdQ&usqp=CAU); background-repeat: no-repeat; background-size: cover;">
        <div class="card-body">
              <p><b> Purpose: </b><%= event.purpose %></p>
              <p><b> People: </b><%= event.people %></p>
              <p><b> Start Time: </b><%= event.start_date %></p>
              <p><b> End Time: </b><%= event.end_date %></p>
+             <p><b> Room: </b><%= event.room.room %></p>
              <p style="color:red;">Meeting Expried</p>
              <p><b> Host: </b><%= event.user.to_s %></p>    
          <% if current_user.role == "HR" %>
@@ -20,4 +21,4 @@
     <% end %>
 </div>
 <br>
-<%= link_to "Back to users", root_path , class:"btn btn-outline-success"%>
+<%= link_to "Back to users", root_path , class:"btn btn-success"%>
